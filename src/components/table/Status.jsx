@@ -11,6 +11,7 @@ const Status = ({ status }) => {
           <Badge type="warning">{status}</Badge>
         )}
         {status === "Processing" && <Badge>{status}</Badge>}
+        {status === "Shipped" && <Badge>{status}</Badge>}
         {(status === "Delivered" || status === "Active") && (
           <Badge type="success">{status}</Badge>
         )}
@@ -18,6 +19,11 @@ const Status = ({ status }) => {
         {status === `POS-Completed` && (
           <Badge className="dark:bg-teal-900 bg-teal-100">{status}</Badge>
         )}
+        {status === `ReturnRequested` && (
+          <Badge className="dark:bg-teal-900 bg-teal-100">{status}</Badge>
+        )}
+        {status === `Returned` && <Badge type="success">{status}</Badge>}
+        {status === `ReturnRejected` && <Badge type="danger">{status}</Badge>}
       </span>
     </>
   );

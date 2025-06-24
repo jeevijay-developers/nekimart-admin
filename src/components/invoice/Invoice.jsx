@@ -2,8 +2,7 @@ import React from "react";
 import { TableCell, TableBody, TableRow } from "@windmill/react-ui";
 
 const Invoice = ({ data, currency, getNumberTwo }) => {
-  console.log(data);
-
+  // console.log("data ->", data);
   return (
     <>
       <TableBody className="bg-white dark:bg-gray-800 divide-y divide-gray-100 text-serif text-sm ">
@@ -12,14 +11,17 @@ const Invoice = ({ data, currency, getNumberTwo }) => {
             <TableCell className="px-6 py-1 whitespace-nowrap font-normal text-gray-500 text-left">
               {i + 1}{" "}
             </TableCell>
-            <TableCell className="px-6 py-1 whitespace-nowrap font-normal text-gray-500">
-              <span
-                className={`text-gray-700 font-semibold  dark:text-gray-300 text-xs ${
-                  item.title.length > 15 ? "wrap-long-title" : "" // Apply class conditionally
-                }`}
+            <TableCell className="px-6 py-1 flex flex-col whitespace-nowrap font-normal text-gray-500">
+              <div
+                className={`text-gray-700 font-semibold  dark:text-gray-300 text-xs `}
+                // ${
+                //   item.title.length > 15 ? "wrap-long-title" : "" // Apply class conditionally
+                // }
               >
                 {item.title}
-              </span>
+              </div>
+              {item?.sku && <strong>(sku:{item?.sku})</strong>}
+              <div></div>
             </TableCell>
             <TableCell className="px-6 py-1 whitespace-nowrap font-bold text-center">
               {item.quantity}{" "}
@@ -28,11 +30,11 @@ const Invoice = ({ data, currency, getNumberTwo }) => {
               {currency}
               {/* {getNumberTwo(item.price)} */}
               {getNumberTwo(
-                (item.price * 100) / (100 + (item.prices?.gst ?? 0))
+                (item.price * 100) / (100 + (item.prices.gst ?? 0))
               )}
             </TableCell>
             <TableCell className="px-6 py-1 whitespace-nowrap font-bold text-center">
-              {getNumberTwo(item.prices?.gst ?? 0)}
+              {getNumberTwo(item.prices.gst)}
               {" %"}
             </TableCell>
 

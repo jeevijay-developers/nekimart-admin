@@ -82,14 +82,11 @@ const useProductSubmit = (id) => {
   // console.log("res", resData);
 
   const onSubmit = async (data) => {
-    // console.log('data ',data)
+    // console.log('data is data',data)
     try {
       setIsSubmitting(true);
-      // console.log("image url",imageUrl.length,imageUrl)
-      if (imageUrl.length < 1) {
-         notifyError("Image is required!"); 
-        return setIsSubmitting(false);
-        }
+      if (!imageUrl) return notifyError("Image is required!");
+
       if (data.originalPrice < data.price) {
         setIsSubmitting(false);
         return notifyError(

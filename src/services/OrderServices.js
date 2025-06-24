@@ -13,6 +13,7 @@ const OrderServices = {
     method,
     startDate,
     endDate,
+    invoice,
     // download = "",
   }) => {
     const searchName = customerName !== null ? customerName : "";
@@ -22,9 +23,10 @@ const OrderServices = {
     const searchMethod = method !== null ? method : "";
     const startD = startDate !== null ? startDate : "";
     const endD = endDate !== null ? endDate : "";
+    const searchInvoice = invoice !== null ? invoice : "";
 
     return requests.get(
-      `/orders?customerName=${searchName}&status=${searchStatus}&day=${searchDay}&page=${page}&limit=${limit}&startDate=${startD}&endDate=${endD}&method=${searchMethod}`,
+      `/orders?customerName=${searchName}&status=${searchStatus}&day=${searchDay}&invoice=${searchInvoice}&page=${page}&limit=${limit}&startDate=${startD}&endDate=${endD}&method=${searchMethod}`,
       body,
       headers
     );
@@ -52,9 +54,6 @@ const OrderServices = {
 
   getOrderById: async (id, body) => {
     return requests.get(`/orders/${id}`, body);
-  },
-  getTelecallerOrderById: async (id, params = {}) => {
-    return requests.get(`/tele/telecaller-orders/${id}`, { params });
   },
 
   updateOrder: async (id, body, headers) => {

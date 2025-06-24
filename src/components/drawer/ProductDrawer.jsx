@@ -43,8 +43,7 @@ const ProductDrawer = ({ id }) => {
   const { t } = useTranslation();
 
   const {
- 
-    tag,
+     tag,
     setTag,
     values,
     language,
@@ -276,7 +275,7 @@ const ProductDrawer = ({ id }) => {
                   <InputValue
                     disabled={isCombination}
                     register={register}
-                    maxValue={99999999999999999}
+                    maxValue={99999999999999999n}
                     minValue={1}
                     label="Original Price"
                     name="originalPrice"
@@ -347,7 +346,7 @@ const ProductDrawer = ({ id }) => {
                   <Error errorName={errors.stock} />
                 </div>
               </div>
-              <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6 relative">
+              {/* <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6 relative">
                 <LabelArea label={"Commission (%)"} />
                 <div className="col-span-8 sm:col-span-4">
                   <InputValueFive
@@ -363,7 +362,7 @@ const ProductDrawer = ({ id }) => {
                   />
                   <Error errorName={errors.commission} />
                 </div>
-              </div>
+              </div> */}
 
               <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
                 <LabelArea label={t("ProductSlug")} />
@@ -438,7 +437,7 @@ const ProductDrawer = ({ id }) => {
                   {attributes?.map((attribute, i) => (
                     <div key={attribute._id}>
                       <div className="flex w-full h-10 justify-between font-sans rounded-tl rounded-tr bg-gray-200 px-4 py-3 text-left text-sm font-normal text-gray-700 hover:bg-gray-200">
-                        {"Select"}
+                        {"Select "}
                         {showingTranslateValue(attribute?.title)}
                       </div>
 

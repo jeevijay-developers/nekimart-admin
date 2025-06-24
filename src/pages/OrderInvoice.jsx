@@ -24,7 +24,7 @@ import OrderServices from "@/services/OrderServices";
 import Invoice from "@/components/invoice/Invoice";
 import Loading from "@/components/preloader/Loading";
 import logoDark from "@/assets/img/logo/logo-dark.svg";
-import logoLight from "@/assets/img/logo/logo-color.svg";
+import logoLight from "@/assets/img/logo/lg.png";
 import PageTitle from "@/components/Typography/PageTitle";
 import spinnerLoadingImage from "@/assets/img/spinner.gif";
 import useUtilsFunction from "@/hooks/useUtilsFunction";
@@ -47,7 +47,7 @@ const OrderInvoice = () => {
   const { handleErrorNotification } = useError();
   const { handleDisableForDemo } = useDisableForDemo();
 
-  // console.log("data", data);
+  // console.log("Data: ", data);
 
   const { currency, globalSetting, showDateFormat, getNumberTwo } =
     useUtilsFunction();
@@ -89,19 +89,18 @@ const OrderInvoice = () => {
       handleErrorNotification(err, "handleEmailInvoice");
     }
   };
+  // console.log("Global setting: ", globalSetting);
 
   return (
     <>
-      <PageTitle> {t("InvoicePageTittle")} </PageTitle>
-
       <div
         ref={printRef}
         className="bg-white dark:bg-gray-800 mb-4 p-6 lg:p-8 rounded-xl shadow-sm overflow-hidden"
       >
         {!loading && (
           <div className="">
-            <div className="flex lg:flex-row md:flex-row flex-col lg:items-center justify-between pb-4 border-b border-gray-50 dark:border-gray-700 dark:text-gray-300">
-              <h1 className="font-bold font-serif text-xl uppercase">
+            <div className="flex  sm:flex-row flex-col lg:items-center justify-between pb-4 border-b border-gray-50 dark:border-gray-700 dark:text-gray-300">
+              {/* <h1 className="font-bold font-serif text-xl uppercase">
                 {t("InvoicePageTittle")}
                 <p className="text-xs mt-1 text-gray-500">
                   {t("InvoiceStatus")}
@@ -110,53 +109,95 @@ const OrderInvoice = () => {
                     <Status status={data.status} />
                   </span>
                 </p>
-              </h1>
-              <div className="lg:text-right text-left">
-                <h2 className="lg:flex lg:justify-end text-lg font-serif font-semibold mt-4 lg:mt-0 lg:ml-0 md:mt-0">
-                  {mode === "dark" ? (
+              </h1>  */}
+              <div className=" text-left mt-4">
+                <h2 className="lg:flex  text-lg font-serif font-semibold  lg:mt-0 lg:ml-0 md:mt-0">
+                  {/* {mode === "dark" ? (
                     <img src={logoDark} alt="kachabazar" width="110" />
-                  ) : (
-                    <img src={logoLight} alt="kachabazar" width="110" />
-                  )}
+                  ) : ( */}
+                  <img src={logoLight} alt="ocentury" width="110" />
+                  {/* )} */}
                 </h2>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                  {globalSetting?.address} <br />
-                  {globalSetting?.contact} <br />{" "}
-                  <span> {globalSetting?.email} </span> <br />
-                  {globalSetting?.website}
-                </p>
+                <div className="text-sm  text-gray-500">
+                  <>{globalSetting?.company_name}</>
+                  <p className="whitespace-pre-wrap  break-words  lg:max-w-56 ">
+                    {globalSetting?.address}
+                    {globalSetting?.post_code}
+                  </p>
+                  <span></span>
+                  <>Email: {globalSetting?.email}</>
+                  <br />
+                  <>Phone:{globalSetting?.contact}</>
+                  <>
+                    {globalSetting?.city} {globalSetting?.state}
+                  </>
+                </div>
               </div>
-            </div>
-            <div className="flex lg:flex-row md:flex-row flex-col justify-between pt-4">
-              <div className="mb-3 md:mb-0 lg:mb-0 flex flex-col">
-                <span className="font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
-                  {t("InvoiceDate")}
-                </span>
-                <span className="text-sm text-gray-500 dark:text-gray-400 block">
-                  {showDateFormat(data?.createdAt)}
-                </span>
-              </div>
-              <div className="mb-3 md:mb-0 lg:mb-0 flex flex-col">
-                <span className="font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
-                  {t("InvoiceNo")}
-                </span>
-                <span className="text-sm text-gray-500 dark:text-gray-400 block">
-                  #{data?.invoice}
-                </span>
-              </div>
-              <div className="flex flex-col lg:text-right text-left">
-                <span className="font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
+              <div className="flex flex-col ">
+                {/* <span className="font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
                   {t("InvoiceTo")}
-                </span>
-                <span className="text-sm text-gray-500 dark:text-gray-400 block">
+                </span> */}
+                <PageTitle> {t("InvoicePageTittle")} </PageTitle>
+                <div className="flex flex-row flex-wrap justify-between gap-4 pt-4">
+                  {/* Invoice Date */}
+                  <div className="flex flex-col items-center">
+                    <span className="font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500">
+                      {t("InvoiceDate")}
+                    </span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                      {showDateFormat(data?.createdAt)}
+                    </span>
+                  </div>
+
+                  {/* Invoice Status */}
+                  <div className="flex flex-col">
+                    <span className="font-bold items-center font-serif text-sm uppercase text-gray-600 dark:text-gray-500">
+                      {t("InvoiceStatus")}
+                    </span>
+                    <span className="text-xs mt-1 text-gray-500 flex ">
+                      <Status status={data.status} />
+                    </span>
+                  </div>
+
+                  {/* Invoice Number */}
+                  <div className="flex flex-col">
+                    <span className="font-bold items-center font-serif text-sm uppercase text-gray-600 dark:text-gray-500">
+                      {t("InvoiceNo")}
+                    </span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                      #{data?.invoice}
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-2 font-bold font-serif text-sm uppercase">
+                  Ship To :
+                </div>
+                <span className="text-sm text-gray-500 block">
                   {data?.user_info?.name} <br />
-                  {data?.user_info?.email}{" "}
-                  <span className="ml-2">{data?.user_info?.contact}</span>
+                  {data?.user_info?.address}
                   <br />
-                  {data?.user_info?.address?.substring(0, 30)}
+                  {data.user_info?.city}, {data.user_info?.state},{" "}
+                  {data.user_info?.country}. {data.user_info?.zipCode}
                   <br />
-                  {data?.user_info?.city}, {data?.user_info?.country},{" "}
-                  {data?.user_info?.zipCode}
+                  {data?.user_info?.landmark && (
+                    <>
+                      <strong>Landmark: </strong>
+                      {data.user_info.landmark}
+                      <br />
+                    </>
+                  )}
+                  {data?.user_info?.email && (
+                    <>
+                      <strong>Email:</strong> {data.user_info.email}
+                      <br />
+                    </>
+                  )}
+                  {data?.user_info?.contact && (
+                    <span>
+                      <strong>Phone:</strong> {data.user_info.contact}
+                    </span>
+                  )}
+                  <br />
                 </span>
               </div>
             </div>
@@ -180,10 +221,8 @@ const OrderInvoice = () => {
                     <TableCell className="text-center">
                       {t("ItemPrice")}
                     </TableCell>
-                    <TableCell className="text-center">
-                      {("GST")}
-                    </TableCell>
-                    <TableCell className="text-right">{("Amount")}</TableCell>
+                    <TableCell className="text-center">{"GST"}</TableCell>
+                    <TableCell className="text-right">{"Amount"}</TableCell>
                   </tr>
                 </TableHeader>
                 <Invoice
@@ -198,7 +237,7 @@ const OrderInvoice = () => {
 
         {!loading && (
           <div className="border rounded-xl border-gray-100 p-8 py-6 bg-gray-50 dark:bg-gray-900 dark:border-gray-800">
-            <div className="flex lg:flex-row md:flex-row flex-col justify-between">
+            <div className="flex sm:flex-row  flex-col justify-between">
               <div className="mb-3 md:mb-0 lg:mb-0  flex flex-col sm:flex-wrap">
                 <span className="mb-1 font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
                   {t("InvoicepaymentMethod")}
@@ -239,13 +278,12 @@ const OrderInvoice = () => {
         )}
       </div>
       {!loading && !error && (
-        <div className="mb-4 mt-3 flex md:flex-row flex-col items-center justify-between">
-          <PDFDownloadLink
+        <div className="mb-4 mt-3 flex md:flex-row flex-col items-center justify-end">
+          {/* <PDFDownloadLink
             document={
               <InvoiceForDownload
                 t={t}
                 data={data}
-                globalSetting={globalSetting}
                 currency={currency}
                 getNumberTwo={getNumberTwo}
                 showDateFormat={showDateFormat}
@@ -265,10 +303,10 @@ const OrderInvoice = () => {
                 </button>
               )
             }
-          </PDFDownloadLink>
+          </PDFDownloadLink> */}
 
           <div className="flex md:mt-0 mt-3 gap-4 md:w-auto w-full">
-            {globalSetting?.email_to_customer && (
+            {/* {globalSetting?.email_to_customer && (
               <div className="flex justify-end md:w-auto w-full">
                 {isSubmitting ? (
                   <Button
@@ -299,7 +337,7 @@ const OrderInvoice = () => {
                   </button>
                 )}
               </div>
-            )}
+            )} */}
 
             <div className="md:w-auto w-full">
               <ReactToPrint

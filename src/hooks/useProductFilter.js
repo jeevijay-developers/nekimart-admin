@@ -14,7 +14,6 @@ const schema = {
   type: "object",
   properties: {
     categories: { type: "array" },
-    commission: { type: "number" },
     image: { type: "array" },
     tag: { type: "array" },
     variants: { type: "array" },
@@ -29,7 +28,7 @@ const schema = {
     stock: { type: "number" },
     description: { type: "object" },
   },
-  required: ["categories", "category", "prices", "title", "commission"],
+  required: ["categories", "category", "prices", "title"],
 };
 
 const useProductFilter = (data) => {
@@ -90,7 +89,6 @@ const useProductFilter = (data) => {
         const productData = text.map((value) => {
           return {
             categories: value.categories,
-            commission: value.commission || 0,
             image: value.image,
             barcode: value.barcode,
             tag: value.tag,
@@ -121,7 +119,6 @@ const useProductFilter = (data) => {
         const productData = json.map((value) => {
           return {
             categories: JSON.parse(value.categories),
-            commission: JSON.parse(value.commission || 0),
             image: JSON.parse(value.image),
             barcode: value.barcode,
             tag: JSON.parse(value.tag),

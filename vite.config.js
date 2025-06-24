@@ -59,10 +59,10 @@ export default defineConfig({
         scope: ".",
         start_url: ".",
         id: ".",
-        short_name: "Kachabazar - E-Commerce Website",
-        name: "Kachabazar | React eCommerce Admin Dashboard",
+        short_name: "Ocentury - E-Commerce Website",
+        name: "Ocentury | eCommerce Admin Dashboard",
         description:
-          "Kachabazar : React Grocery & Organic Food Store e-commerce Admin Dashboard",
+          "Ocentury :  e-commerce Admin Dashboard",
         icons: [
           {
             src: "favicon.ico",

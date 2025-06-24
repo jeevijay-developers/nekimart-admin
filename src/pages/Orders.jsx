@@ -43,6 +43,9 @@ const Orders = () => {
     currentPage,
     searchText,
     searchRef,
+    invoiceRef,
+    invoice,
+    setInvoice,
     method,
     setMethod,
     setStartDate,
@@ -66,11 +69,12 @@ const Orders = () => {
       startDate: startDate,
       limit: resultsPerPage,
       customerName: searchText,
+      invoice: invoice,
     })
   );
 
   const { currency, getNumber, getNumberTwo } = useUtilsFunction();
-  // console.log("data ->  ",data);
+
   const { dataTable, serviceData } = useFilter(data?.orders);
 
   const handleDownloadOrders = async () => {
@@ -128,6 +132,7 @@ const Orders = () => {
     setStartDate("");
     setSearchText("");
     searchRef.current.value = "";
+    setInvoice(null)
   };
   // console.log("data in orders page", data);
 
@@ -145,7 +150,15 @@ const Orders = () => {
                     ref={searchRef}
                     type="search"
                     name="search"
-                    placeholder="Search by Customer Name"
+                    placeholder="Name/Email/Phone"
+                  />
+                </div>
+                <div>
+                  <Input
+                    ref={invoiceRef}
+                    type="number"
+                    name="InvoiceSearch"
+                    placeholder="Search Invoice No"
                   />
                 </div>
 
@@ -154,12 +167,22 @@ const Orders = () => {
                     <option value="Status" defaultValue hidden>
                       {t("Status")}
                     </option>
-                    <option value="Delivered">{t("PageOrderDelivered")}</option>
-                    <option value="Pending">{t("PageOrderPending")}</option>
+
+                    <option value="Pending">Placed</option>
                     <option value="Processing">
                       {t("PageOrderProcessing")}
                     </option>
-                    <option value="Cancel">{t("OrderCancel")}</option>
+                    <option value="Shipped">{"Shipped"}</option>
+
+                    <option value="Delivered">{t("PageOrderDelivered")}</option>
+                    <option value="Cancel">Cancelled</option>
+                    <option value="ReturnRequested">Return</option>
+                    <option value="Returned">Returned</option>
+                    <option value="ReturnRejected">Return Rejected</option>
+                    {/* <option value="OnReturn">On Return</option> */}
+                    {/* <option value="ReturnCancelledByUser">
+                      Return Cancelled By User
+                    </option> */}
                   </Select>
                 </div>
 
@@ -306,12 +329,7 @@ const Orders = () => {
                 <TableCell>{t("MethodTbl")}</TableCell>
                 <TableCell>{t("AmountTbl")}</TableCell>
                 <TableCell>{t("OderStatusTbl")}</TableCell>
-
-                {/* <TableCell>Phone</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Name</TableCell>*/}
                 <TableCell>{t("ActionTbl")}</TableCell>
-                <TableCell>view Details</TableCell>
                 <TableCell className="text-right">{t("InvoiceTbl")}</TableCell>
               </tr>
             </TableHeader>

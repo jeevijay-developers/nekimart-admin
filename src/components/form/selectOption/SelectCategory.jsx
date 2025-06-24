@@ -13,7 +13,7 @@ const SelectCategory = ({ setCategory }) => {
   const { t } = useTranslation();
   const { data } = useAsync(CategoryServices.getAllCategories);
   const { showingTranslateValue } = useUtilsFunction();
-
+  // console.log("categories", data)
   return (
     <>
       <Select onChange={(e) => setCategory(e.target.value)}>

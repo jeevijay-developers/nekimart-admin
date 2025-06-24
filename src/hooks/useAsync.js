@@ -23,6 +23,7 @@ const useAsync = (asyncFunction) => {
     currentPage,
     category,
     searchText,
+    searchSku,
     sortedField,
   } = useContext(SidebarContext);
 
@@ -72,6 +73,8 @@ const useAsync = (asyncFunction) => {
     endDate,
     isUpdate,
     currentPage,
+    searchSku,
+    invoice,
     category,
     searchText,
     sortedField,

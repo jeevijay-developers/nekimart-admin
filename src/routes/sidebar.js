@@ -119,16 +119,17 @@ const sidebar = [
       },
     ],
   },
-  {
-    path: "/telecallers", // the url
-    icon: FiGrid, // icon
-    name: "Telecallers", // name that appear in Sidebar
-  },
-  {
-    path: "/storepartners", // the url
-    icon: FiGrid, // icon
-    name: "Store Partners", // name that appear in Sidebar
-  },
+
+  // {
+  //   path: "/telecallers", // the url
+  //   icon: FiGrid, // icon
+  //   name: "Telecallers", // name that appear in Sidebar
+  // },
+  // {
+  //   path: "/storepartners", // the url
+  //   icon: FiGrid, // icon
+  //   name: "Store Partners", // name that appear in Sidebar
+  // },
 ];
 
 export default sidebar;

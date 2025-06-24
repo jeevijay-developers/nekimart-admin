@@ -217,9 +217,12 @@ const useFilter = (data) => {
     }
     //User and Admin filtering
     if (searchUser) {
+      // console.log("search user", searchUser);
+      // console.log("services", services);
+
       services = services.filter(
         (search) =>
-          search?.name[lang]
+          search?.name
             ?.toLowerCase()
             .includes(searchUser.toLowerCase()) ||
           search?.phone?.toLowerCase().includes(searchUser.toLowerCase()) ||

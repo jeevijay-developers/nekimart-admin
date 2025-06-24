@@ -2,7 +2,7 @@ import React from 'react'
 
 const PageTitle = ({ children }) => {
   return (
-    <h1 className="mt-2 text-3xl font-bold text-gray-700 dark:text-white">{children}</h1>
+    <h1 className="my-4  text-2xl hidden sm:block font-bold uppercase  text-gray-700 text-center dark:text-gray-300">{children}</h1>
   )
 }
 

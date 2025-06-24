@@ -11,9 +11,11 @@ export const SidebarContext = createContext();
 export const SidebarProvider = ({ children }) => {
   const resultsPerPage = 20;
   const searchRef = useRef("");
+  const skuRef = useRef("");
+  
   const invoiceRef = useRef("");
   // const dispatch = useDispatch();
-
+  const [searchSku, setSearchSku] = useState(null);
   const [limitData, setLimitData] = useState(20);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -90,12 +92,13 @@ export const SidebarProvider = ({ children }) => {
   };
 
   const handleSubmitForAll = (e) => {
+    // console.log("filter button clicked",searchRef?.current?.value, skuRef?.current?.value)
     e.preventDefault();
-    if (!searchRef?.current?.value) return setSearchText(null);
-    setSearchText(searchRef?.current?.value);
-    setCategory(null);
+    setSearchText(searchRef?.current?.value || null);
+    setSearchSku(skuRef?.current?.value || null);
+    setInvoice(invoiceRef?.current?.value || null);
+    setCurrentPage(1); 
   };
-
   // console.log("globalSetting", globalSetting, "languages", languages);
 
   useEffect(() => {
@@ -207,6 +210,9 @@ export const SidebarProvider = ({ children }) => {
         navBar,
         tabIndex,
         setTabIndex,
+        skuRef,
+        searchSku,
+        setSearchSku,
       }}
     >
       {children}

@@ -130,7 +130,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
           <div className="w-full text-gray-500">
             <strong>{t("ShippingInfo")}</strong>
           </div>
-          <div className="w-full">
+          {/* <div className="w-full">
             <InputAreaTwo
               register={register}
               label={t("ShippingInfo")}
@@ -139,7 +139,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
               placeholder={t("ShippingInfo")}
             />
             <Error errorName={errors.shipping_details} />
-          </div>
+          </div> */}
         </div>
 
         <hr className="md:mb-8 mb-3" />
@@ -196,7 +196,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.zip_code} />
           </div>
-          <div className="col-span-4">
+          {/* <div className="col-span-4">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("Shippingcost")}
             </label>
@@ -286,7 +286,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
               placeholder={t("ShippingTwoCost")}
             />
             <Error errorName={errors.shipping_two_cost} />
-          </div>
+          </div> */}
 
           <div className="col-span-4">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">

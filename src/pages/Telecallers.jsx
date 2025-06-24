@@ -54,7 +54,7 @@ const Telecallers = () => {
   } = useFilter(data);
 
   const { t } = useTranslation();
-  // console.log(dataTable);
+  console.log(dataTable);
 
   // handle reset filed
   const handleResetField = () => {
@@ -155,9 +155,6 @@ const Telecallers = () => {
                 <TableCell className="text-center">{"IFSC"}</TableCell>
                 <TableCell className="text-center">
                   {"ACC. Holder Name"}
-                </TableCell>
-                <TableCell className="text-center">
-                  {"Orders"}
                 </TableCell>
                 <TableCell className="text-center">{"Status"}</TableCell>
               </tr>

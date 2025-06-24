@@ -90,6 +90,11 @@ const ProductTable = ({ products, isCheck, setIsCheck }) => {
                 {showingTranslateValue(product?.category?.name)}
               </span>
             </TableCell>
+            <TableCell>
+              <span className="text-sm">
+                {product?.sku}
+              </span>
+            </TableCell>
 
             <TableCell>
               <span className="text-sm font-semibold">

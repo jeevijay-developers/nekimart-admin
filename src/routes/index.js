@@ -1,8 +1,6 @@
 import { lazy } from "react";
 
 // use lazy for better code splitting
-
-// const OrderedBy = lazy(() => import("@/components/orderedby/OrderedBy"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const Attributes = lazy(() => import("@/pages/Attributes"));
 const ChildAttributes = lazy(() => import("@/pages/ChildAttributes"));
@@ -105,10 +103,6 @@ const routes = [
     path: "/order/:id",
     component: OrderInvoice,
   },
-  // {
-  //   path: "/orderedby/:id",
-  //   component: OrderedBy,
-  // },
   {
     path: "/coupons",
     component: Coupons,
@@ -167,7 +161,6 @@ const routeAccessList = [
   { label: "Order Invoice", value: "order" },
   { label: "Edit Profile", value: "edit-profile" },
   { label: "Telecallers", value: "telecallers" },
-  // { label: "Ordered By", value: "orderedby" },
   { label: "Store Partner", value: "storepartners" },
   {
     label: "Customer Order",

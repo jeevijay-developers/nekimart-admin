@@ -54,6 +54,9 @@ const Products = () => {
     sortedField,
     setSortedField,
     limitData,
+    skuRef,
+    searchSku,
+    setSearchSku,
   } = useContext(SidebarContext);
 
   const { data, loading, error } = useAsync(() =>
@@ -62,11 +65,12 @@ const Products = () => {
       limit: limitData,
       category: category,
       title: searchText,
+      sku: searchSku,
       price: sortedField,
     })
   );
 
-  // console.log("product page", data);
+  console.log("product page", data);
 
   // react hooks
   const [isCheckAll, setIsCheckAll] = useState(false);
@@ -84,6 +88,7 @@ const Products = () => {
     setCategory("");
     setSortedField("");
     searchRef.current.value = "";
+    setSearchSku(null);
   };
 
   // console.log('productss',products)
@@ -170,6 +175,7 @@ const Products = () => {
               onSubmit={handleSubmitForAll}
               className="py-3 grid gap-4 lg:gap-6 xl:gap-6 md:flex xl:flex"
             >
+              {/* Product Name Search */}
               <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
                 <Input
                   ref={searchRef}
@@ -177,16 +183,24 @@ const Products = () => {
                   name="search"
                   placeholder="Search Product"
                 />
-                <button
-                  type="submit"
-                  className="absolute right-0 top-0 mt-5 mr-1"
-                ></button>
               </div>
 
+              {/* SKU Search */}
+              <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
+                <Input
+                  ref={skuRef}
+                  type="search"
+                  name="searchSku"
+                  placeholder="Search by SKU"
+                />
+              </div>
+
+              {/* Category Filter */}
               <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
                 <SelectCategory setCategory={setCategory} lang={lang} />
               </div>
 
+              {/* Price Sort */}
               <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
                 <Select onChange={(e) => setSortedField(e.target.value)}>
                   <option value="All" defaultValue hidden>
@@ -210,9 +224,15 @@ const Products = () => {
                   </option>
                 </Select>
               </div>
+
+              {/* Filter and Reset Buttons */}
               <div className="flex items-center gap-2 flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
                 <div className="w-full mx-1">
-                  <Button type="submit" className="h-12 w-full bg-emerald-700">
+                  <Button
+                    type="submit"
+                    className="h-12 w-full bg-emerald-700"
+                    onClick={handleSubmitForAll} // Direct search on click
+                  >
                     Filter
                   </Button>
                 </div>
@@ -253,6 +273,7 @@ const Products = () => {
                 </TableCell>
                 <TableCell>{t("ProductNameTbl")}</TableCell>
                 <TableCell>{t("CategoryTbl")}</TableCell>
+                <TableCell>{"SKU"}</TableCell>
                 <TableCell>{t("PriceTbl")}</TableCell>
                 <TableCell>Sale Price</TableCell>
                 <TableCell>{t("StockTbl")}</TableCell>
