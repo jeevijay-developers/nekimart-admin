@@ -59,10 +59,10 @@ export default defineConfig({
         scope: ".",
         start_url: ".",
         id: ".",
-        short_name: "Ocentury - E-Commerce Website",
-        name: "Ocentury | eCommerce Admin Dashboard",
+        short_name: "Nekimart - E-Commerce Website",
+        name: "Nekimart | eCommerce Admin Dashboard",
         description:
-          "Ocentury :  e-commerce Admin Dashboard",
+          "Nekimart :  e-commerce Admin Dashboard",
         icons: [
           {
             src: "favicon.ico",
