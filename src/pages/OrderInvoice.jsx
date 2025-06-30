@@ -24,7 +24,7 @@ import OrderServices from "@/services/OrderServices";
 import Invoice from "@/components/invoice/Invoice";
 import Loading from "@/components/preloader/Loading";
 import logoDark from "@/assets/img/logo/logo-dark.svg";
-import logoLight from "@/assets/img/logo/lg.png";
+import logoLight from "@/assets/img/logo/logo.png";
 import PageTitle from "@/components/Typography/PageTitle";
 import spinnerLoadingImage from "@/assets/img/spinner.gif";
 import useUtilsFunction from "@/hooks/useUtilsFunction";
