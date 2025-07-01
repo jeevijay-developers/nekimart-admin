@@ -1,9 +1,9 @@
 import requests from "./httpService";
 
 const AdminServices = {
-  getAllPartnerWitUsForm: (page, limit) => {
+  vendorDetails: (page, limit) => {
     return requests.get(
-      `/partnerwithus/getAllPartnerWitUsForm?page=${page}&limit=${limit}`
+      `/vendor/getvendors?page=${page}&limit=${limit}`
     );
   },
   registerAdmin: async (body) => {

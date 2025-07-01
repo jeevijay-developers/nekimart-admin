@@ -6,7 +6,7 @@ import {
   TableHeader,
   TableFooter,
 } from "@windmill/react-ui";
-import ReactPaginate from "react-paginate"; 
+import ReactPaginate from "react-paginate";
 import { useTranslation } from "react-i18next";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 
@@ -20,7 +20,6 @@ import { AdminContext } from "@/context/AdminContext";
 import { SidebarContext } from "@/context/SidebarContext";
 import AdminServices from "@/services/AdminServices";
 import VendorDetailsTable from "@/components/vendorDetailsTable/vendorDetailsTable";
-
 
 const vendorDetails = () => {
   const { state } = useContext(AdminContext);
@@ -40,12 +39,12 @@ const vendorDetails = () => {
       setLoading(true);
       setError("");
       try {
-        const res = await AdminServices.getAllPartnerWitUsForm(
+        const res = await AdminServices.vendorDetails(
           currentPage,
           resultsPerPage
         );
         console.log("vendor details", res);
-        setResult(res)
+        setResult(res);
         setQueries(res.queries || []);
         setTotalQueries(res.totalQueries || 0);
       } catch (err) {
@@ -63,7 +62,7 @@ const vendorDetails = () => {
     setCurrentPage(selectedPage);
   };
 
-  const totalPages = result?.totalPages ?? 1
+  const totalPages = result?.totalPages ?? 1;
   // const totalPages = Math.ceil(totalQueries / resultsPerPage);
 
   return (
