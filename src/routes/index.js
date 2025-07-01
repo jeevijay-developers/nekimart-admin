@@ -25,7 +25,7 @@ const StoreHome = lazy(() => import("@/pages/StoreHome"));
 const StoreSetting = lazy(() => import("@/pages/StoreSetting"));
 const Notifications = lazy(() => import("@/pages/Notifications"));
 const Partner = lazy(() => import("@/pages/Partner"));
-const Telecallers = lazy(() => import("@/pages/Telecallers"));
+const vendorDetails = lazy(() => import("@/pages/vendorDetails"));
 /*
 //  * ⚠ These are internal routes!
 //  * They will be rendered inside the app, using the default `containers/Layout`.
@@ -87,9 +87,13 @@ const routes = [
     path: "/our-staff",
     component: Staff,
   },
+  // {
+  //   path: "/telecallers",
+  //   component: Telecallers,
+  // },
   {
-    path: "/telecallers",
-    component: Telecallers,
+    path: "/vendordetails",
+    component: vendorDetails,
   },
   {
     path: "/storepartners",
@@ -161,6 +165,7 @@ const routeAccessList = [
   { label: "Order Invoice", value: "order" },
   { label: "Edit Profile", value: "edit-profile" },
   { label: "Telecallers", value: "telecallers" },
+  { label: "vendordetails", value: "vendordetails" },
   { label: "Store Partner", value: "storepartners" },
   {
     label: "Customer Order",

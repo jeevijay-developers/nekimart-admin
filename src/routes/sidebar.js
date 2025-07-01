@@ -102,7 +102,11 @@ const sidebar = [
       },
     ],
   },
-
+  {
+    path: "/vendordetails",
+    icon: FiCompass,
+    name: "vendordetails",
+  },
   {
     icon: FiSlack,
     name: "Pages",
@@ -125,6 +129,7 @@ const sidebar = [
   //   icon: FiGrid, // icon
   //   name: "Telecallers", // name that appear in Sidebar
   // },
+
   // {
   //   path: "/storepartners", // the url
   //   icon: FiGrid, // icon
