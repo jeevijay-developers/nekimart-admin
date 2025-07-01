@@ -3,6 +3,7 @@ import { Dialog } from "@headlessui/react";
 import { AiOutlineClose } from "react-icons/ai";
 
 const ViewImagesModal = ({ staff, onClose }) => {
+  console.log("staff",staff)
   return (
     <Dialog open={!!staff} onClose={onClose} className="relative z-50">
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
@@ -51,11 +52,11 @@ const ViewImagesModal = ({ staff, onClose }) => {
                 />
               </div>
             )}
-            {staff.cancelCheque && (
+            {staff.cancelChequeUrl && (
               <div>
                 <p className="font-semibold">Cancelled Cheque:</p>
                 <img
-                  src={staff.cancelCheque}
+                  src={staff.cancelChequeUrl}
                   alt="Cheque"
                   className="w-full rounded border"
                 />
