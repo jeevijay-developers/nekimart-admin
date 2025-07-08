@@ -67,7 +67,7 @@ const vendorDetails = () => {
 
   return (
     <>
-      <PageTitle>{"Product Query"}</PageTitle>
+      <PageTitle>{"Vendor Details"}</PageTitle>
       <MainDrawer>
         <StaffDrawer />
       </MainDrawer>

@@ -38,7 +38,7 @@ const VendorDetailsTable = ({ staffs }) => {
                 className="text-emerald-600 hover:text-emerald-800 flex items-center gap-1"
               >
                 <FiZoomIn />
-                View Images
+                View More
               </button>
             </TableCell>
           </TableRow>
