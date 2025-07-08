@@ -2,26 +2,26 @@ import { TableBody, TableCell, TableRow } from "@windmill/react-ui";
 import React, { useState } from "react";
 import { FiZoomIn } from "react-icons/fi";
 
-import ViewImagesModal from "@/components/modal/ViewImagesModal"; // you will create this
+import ViewMoreModal from "@/components/modal/ViewMoreModal"; // you will create this
 import useUtilsFunction from "@/hooks/useUtilsFunction";
 
 const VendorDetailsTable = ({ staffs }) => {
   const { showDateFormat } = useUtilsFunction();
 
-  const [selectedImages, setSelectedImages] = useState(null);
+  const [selectedRow, setSelectedRow] = useState(null);
 
   const handleViewImages = (staff) => {
-    setSelectedImages(staff);
+    setSelectedRow(staff);
   };
 
   const handleCloseModal = () => {
-    setSelectedImages(null);
+    setSelectedRow(null);
   };
 
   return (
     <>
-      {selectedImages && (
-        <ViewImagesModal staff={selectedImages} onClose={handleCloseModal} />
+      {selectedRow && (
+        <ViewMoreModal staff={selectedRow} onClose={handleCloseModal} />
       )}
 
       <TableBody>

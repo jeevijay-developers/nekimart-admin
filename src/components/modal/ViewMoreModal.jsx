@@ -2,8 +2,9 @@ import React from "react";
 import { Dialog } from "@headlessui/react";
 import { AiOutlineClose } from "react-icons/ai";
 
-const ViewImagesModal = ({ staff, onClose }) => {
-  console.log("staff",staff)
+const ViewMore = ({ staff, onClose }) => {
+  console.log("staff", staff);
+
   return (
     <Dialog open={!!staff} onClose={onClose} className="relative z-50">
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
@@ -20,7 +21,59 @@ const ViewImagesModal = ({ staff, onClose }) => {
               <AiOutlineClose className="h-6 w-6" />
             </button>
           </div>
-
+          {/* Text Information */}
+          <div className="space-y-2">
+            <div>
+              <p className="font-semibold ">About Product:</p>
+              <p className="text-gray-800 dark:text-gray-200 p-2 rounded bg-gray-50 dark:bg-gray-800">
+                {staff.aboutProduct}
+              </p>
+            </div>
+            <div>
+              <p className="font-semibold">Bank Account Number:</p>
+              <p>{staff.bankAccNumber}</p>
+            </div>
+            <div>
+              <p className="font-semibold">IFSC Code:</p>
+              <p>{staff.IFSC}</p>
+            </div>
+            <div>
+              <p className="font-semibold">Account Holder Name:</p>
+              <p>{staff.accountHolderName}</p>
+            </div>
+            <div>
+              <p className="font-semibold">Bank Branch:</p>
+              <p>{staff.bankBranch}</p>
+            </div>
+            <div>
+              <p className="font-semibold">GST Number:</p>
+              <p>{staff.GSTNumber}</p>
+            </div>
+            <div>
+              <p className="font-semibold">Address:</p>
+              <p>{staff.address}</p>
+            </div>
+            <div>
+              <p className="font-semibold">Pincode:</p>
+              <p>{staff.pincode}</p>
+            </div>
+            <div>
+              <p className="font-semibold">Aadhar Number:</p>
+              <p>{staff.aadharNumber}</p>
+            </div>
+            <div>
+              <p className="font-semibold">PAN Number:</p>
+              <p>{staff.panNumber}</p>
+            </div>
+            <div>
+              <p className="font-semibold">Status:</p>
+              <p>{staff.status}</p>
+            </div>
+          </div>
+          {/* Images */}
+          <div className="text-3xl underline font-bold text-center  ">
+            Images
+          </div>
           <div className="space-y-4">
             {staff.logoUrl && (
               <div>
@@ -69,4 +122,4 @@ const ViewImagesModal = ({ staff, onClose }) => {
   );
 };
 
-export default ViewImagesModal;
+export default ViewMore;
