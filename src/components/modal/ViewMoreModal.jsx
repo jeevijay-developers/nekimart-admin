@@ -7,114 +7,218 @@ const ViewMore = ({ staff, onClose }) => {
 
   return (
     <Dialog open={!!staff} onClose={onClose} className="relative z-50">
-      <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+      {/* Backdrop with blur effect */}
+      <div
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+        aria-hidden="true"
+      />
+
       <div className="fixed inset-0 flex items-center justify-center p-4">
-        <Dialog.Panel className="bg-white max-w-2xl w-full rounded p-4 space-y-4 overflow-y-auto max-h-[80vh] shadow-xl">
-          <div className="flex justify-between items-center border-b pb-2">
-            <Dialog.Title className="text-lg font-semibold">
-              View Documents
+        <Dialog.Panel className="bg-white max-w-4xl w-full rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4 flex justify-between items-center text-white">
+            <Dialog.Title className="text-2xl font-bold">
+              📄 View Documents
             </Dialog.Title>
             <button
               onClick={onClose}
-              className="text-gray-500 hover:text-gray-700"
+              className="text-white/80 hover:text-white hover:bg-white/20 p-2 rounded-full transition-all duration-200"
             >
               <AiOutlineClose className="h-6 w-6" />
             </button>
           </div>
-          {/* Text Information */}
-          <div className="space-y-2">
-            <div>
-              <p className="font-semibold ">About Product:</p>
-              <p className="text-gray-800 dark:text-gray-200 p-2 rounded bg-gray-50 dark:bg-gray-800">
-                {staff.aboutProduct}
-              </p>
-            </div>
-            <div>
-              <p className="font-semibold">Bank Account Number:</p>
-              <p>{staff.bankAccNumber}</p>
-            </div>
-            <div>
-              <p className="font-semibold">IFSC Code:</p>
-              <p>{staff.IFSC}</p>
-            </div>
-            <div>
-              <p className="font-semibold">Account Holder Name:</p>
-              <p>{staff.accountHolderName}</p>
-            </div>
-            <div>
-              <p className="font-semibold">Bank Branch:</p>
-              <p>{staff.bankBranch}</p>
-            </div>
-            <div>
-              <p className="font-semibold">GST Number:</p>
-              <p>{staff.GSTNumber}</p>
-            </div>
-            <div>
-              <p className="font-semibold">Address:</p>
-              <p>{staff.address}</p>
-            </div>
-            <div>
-              <p className="font-semibold">Pincode:</p>
-              <p>{staff.pincode}</p>
-            </div>
-            <div>
-              <p className="font-semibold">Aadhar Number:</p>
-              <p>{staff.aadharNumber}</p>
-            </div>
-            <div>
-              <p className="font-semibold">PAN Number:</p>
-              <p>{staff.panNumber}</p>
-            </div>
-            <div>
-              <p className="font-semibold">Status:</p>
-              <p>{staff.status}</p>
-            </div>
-          </div>
-          {/* Images */}
-          <div className="text-3xl underline font-bold text-center  ">
-            Images
-          </div>
-          <div className="space-y-4">
-            {staff.logoUrl && (
-              <div>
-                <p className="font-semibold">Logo:</p>
-                <img
-                  src={staff.logoUrl}
-                  alt="Logo"
-                  className="w-full rounded border"
-                />
+
+          {/* Content */}
+          <div className="flex-1 overflow-y-auto p-6 space-y-8">
+            {/* Personal Information Section */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+              <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <span className="bg-blue-500 text-white p-2 rounded-lg mr-3">
+                  ℹ️
+                </span>
+                Personal Information
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-blue-200">
+                  <p className="font-semibold text-gray-700 mb-2">
+                    Aadhar Number:
+                  </p>
+                  <p className="text-gray-600 font-mono bg-gray-50 px-3 py-1 rounded">
+                    {staff?.aadharNumber || "Not provided"}
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-blue-200">
+                  <p className="font-semibold text-gray-700 mb-2">
+                    PAN Number:
+                  </p>
+                  <p className="text-gray-600 font-mono bg-gray-50 px-3 py-1 rounded">
+                    {staff?.panNumber || "Not provided"}
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-blue-200 md:col-span-2">
+                  <p className="font-semibold text-gray-700 mb-2">Address:</p>
+                  <p className="text-gray-600">
+                    {staff?.address || "Not provided"}
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-blue-200">
+                  <p className="font-semibold text-gray-700 mb-2">Pincode:</p>
+                  <p className="text-gray-600 font-mono bg-gray-50 px-3 py-1 rounded">
+                    {staff?.pincode || "Not provided"}
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-blue-200">
+                  <p className="font-semibold text-gray-700 mb-2">Status:</p>
+                  <span
+                    className={`px-3 py-1 rounded-full text-sm font-medium ${
+                      staff?.status === "Active"
+                        ? "bg-green-100 text-green-800"
+                        : staff?.status === "Inactive"
+                        ? "bg-red-100 text-red-800"
+                        : "bg-gray-100 text-gray-800"
+                    }`}
+                  >
+                    {staff?.status || "Not provided"}
+                  </span>
+                </div>
               </div>
-            )}
-            {staff.aadharCardUrl && (
-              <div>
-                <p className="font-semibold">Aadhar Card:</p>
-                <img
-                  src={staff.aadharCardUrl}
-                  alt="Aadhar"
-                  className="w-full rounded border"
-                />
+            </div>
+
+            {/* Business Information Section */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
+              <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <span className="bg-green-500 text-white p-2 rounded-lg mr-3">
+                  🏢
+                </span>
+                Business Information
+              </h3>
+              <div className="space-y-4">
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-green-200">
+                  <p className="font-semibold text-gray-700 mb-2">
+                    About Product:
+                  </p>
+                  <p className="text-gray-600 leading-relaxed bg-gray-50 p-3 rounded-lg">
+                    {staff?.aboutProduct || "Not provided"}
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-green-200">
+                  <p className="font-semibold text-gray-700 mb-2">
+                    GST Number:
+                  </p>
+                  <p className="text-gray-600 font-mono bg-gray-50 px-3 py-1 rounded">
+                    {staff?.GSTNumber || "Not provided"}
+                  </p>
+                </div>
               </div>
-            )}
-            {staff.panCardUrl && (
-              <div>
-                <p className="font-semibold">PAN Card:</p>
-                <img
-                  src={staff.panCardUrl}
-                  alt="PAN"
-                  className="w-full rounded border"
-                />
+            </div>
+
+            {/* Banking Information Section */}
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
+              <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <span className="bg-purple-500 text-white p-2 rounded-lg mr-3">
+                  🏦
+                </span>
+                Banking Information
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-purple-200">
+                  <p className="font-semibold text-gray-700 mb-2">
+                    Account Holder Name:
+                  </p>
+                  <p className="text-gray-600">
+                    {staff?.accountHolderName || "Not provided"}
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-purple-200">
+                  <p className="font-semibold text-gray-700 mb-2">
+                    Bank Account Number:
+                  </p>
+                  <p className="text-gray-600 font-mono bg-gray-50 px-3 py-1 rounded">
+                    {staff?.bankAccNumber || "Not provided"}
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-purple-200">
+                  <p className="font-semibold text-gray-700 mb-2">IFSC Code:</p>
+                  <p className="text-gray-600 font-mono bg-gray-50 px-3 py-1 rounded">
+                    {staff?.IFSC || "Not provided"}
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-purple-200">
+                  <p className="font-semibold text-gray-700 mb-2">
+                    Bank Branch:
+                  </p>
+                  <p className="text-gray-600">
+                    {staff?.bankBranch || "Not provided"}
+                  </p>
+                </div>
               </div>
-            )}
-            {staff.cancelChequeUrl && (
-              <div>
-                <p className="font-semibold">Cancelled Cheque:</p>
-                <img
-                  src={staff.cancelChequeUrl}
-                  alt="Cheque"
-                  className="w-full rounded border"
-                />
+            </div>
+
+            {/* Images Section */}
+            <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 border border-orange-100">
+              <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                <span className="bg-orange-500 text-white p-2 rounded-lg mr-3">
+                  📸
+                </span>
+                Document Images
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {staff?.logoUrl && (
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-orange-200">
+                    <p className="font-semibold text-gray-700 mb-3">Logo:</p>
+                    <div className="relative overflow-hidden rounded-lg border-2 border-gray-200 hover:border-orange-300 transition-colors">
+                      <img
+                        src={staff.logoUrl}
+                        alt="Logo"
+                        className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                )}
+                {staff?.aadharCardUrl && (
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-orange-200">
+                    <p className="font-semibold text-gray-700 mb-3">
+                      Aadhar Card:
+                    </p>
+                    <div className="relative overflow-hidden rounded-lg border-2 border-gray-200 hover:border-orange-300 transition-colors">
+                      <img
+                        src={staff.aadharCardUrl}
+                        alt="Aadhar"
+                        className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                )}
+                {staff?.panCardUrl && (
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-orange-200">
+                    <p className="font-semibold text-gray-700 mb-3">
+                      PAN Card:
+                    </p>
+                    <div className="relative overflow-hidden rounded-lg border-2 border-gray-200 hover:border-orange-300 transition-colors">
+                      <img
+                        src={staff.panCardUrl}
+                        alt="PAN"
+                        className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                )}
+                {staff?.cancelChequeUrl && (
+                  <div className="bg-white rounded-lg p-4 shadow-sm border border-orange-200">
+                    <p className="font-semibold text-gray-700 mb-3">
+                      Cancelled Cheque:
+                    </p>
+                    <div className="relative overflow-hidden rounded-lg border-2 border-gray-200 hover:border-orange-300 transition-colors">
+                      <img
+                        src={staff.cancelChequeUrl}
+                        alt="Cheque"
+                        className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </Dialog.Panel>
       </div>
