@@ -22,7 +22,11 @@ const sidebar = [
     icon: FiGrid, // icon
     name: "Dashboard", // name that appear in Sidebar
   },
-
+  {
+    path: "/vendordetails",
+    icon: FiCompass,
+    name: "Vendor Details",
+  },
   {
     icon: FiSlack,
     name: "Catalog",
@@ -102,11 +106,7 @@ const sidebar = [
       },
     ],
   },
-  {
-    path: "/vendordetails",
-    icon: FiCompass,
-    name: "vendordetails",
-  },
+
   {
     icon: FiSlack,
     name: "Pages",

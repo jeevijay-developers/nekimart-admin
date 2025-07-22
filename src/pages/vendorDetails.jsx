@@ -21,7 +21,7 @@ import { SidebarContext } from "@/context/SidebarContext";
 import AdminServices from "@/services/AdminServices";
 import VendorDetailsTable from "@/components/vendorDetailsTable/vendorDetailsTable";
 
-const vendorDetails = () => {
+const VendorDetails = () => {
   const { state } = useContext(AdminContext);
   const { adminInfo } = state;
   const { toggleDrawer, lang } = useContext(SidebarContext);
@@ -118,4 +118,4 @@ const vendorDetails = () => {
   );
 };
 
-export default vendorDetails;
+export default VendorDetails;
