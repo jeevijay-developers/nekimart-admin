@@ -19,7 +19,7 @@ import NotFound from "@/components/table/NotFound";
 import { AdminContext } from "@/context/AdminContext";
 import { SidebarContext } from "@/context/SidebarContext";
 import AdminServices from "@/services/AdminServices";
-import VendorDetailsTable from "@/components/vendorDetailsTable/vendorDetailsTable";
+import VendorDetailsTable from "@/components/vendorDetailsTable/VendorDetailsTable";
 
 const VendorDetails = () => {
   const { state } = useContext(AdminContext);
