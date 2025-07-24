@@ -25,7 +25,7 @@ const sidebar = [
   {
     path: "/vendordetails",
     icon: FiCompass,
-    name: "Vendor Details",
+    name: "VendorDetails",
   },
   {
     icon: FiSlack,

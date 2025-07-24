@@ -43,6 +43,10 @@ const routes = [
     component: Dashboard,
   },
   {
+    path: "/vendordetails",
+    component: VendorDetails,
+  },
+  {
     path: "/products",
     component: Products,
   },
@@ -91,10 +95,7 @@ const routes = [
   //   path: "/telecallers",
   //   component: Telecallers,
   // },
-  {
-    path: "/vendordetails",
-    component: VendorDetails,
-  },
+
   {
     path: "/storepartners",
     component: Partner,
@@ -148,6 +149,7 @@ const routeAccessList = [
   //   value: "/",
   // },
   { label: "Dashboard", value: "dashboard" },
+  { label: "VendorDetails", value: "vendordetails" },
   { label: "Products", value: "products" },
   { label: "Categories", value: "categories" },
   { label: "Attributes", value: "attributes" },
