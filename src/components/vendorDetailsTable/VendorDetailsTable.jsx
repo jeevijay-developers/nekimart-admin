@@ -9,7 +9,6 @@ const VendorDetailsTable = ({ staffs }) => {
   const { showDateFormat } = useUtilsFunction();
 
   const [selectedRow, setSelectedRow] = useState(null);
-
   const handleViewImages = (staff) => {
     setSelectedRow(staff);
   };
@@ -31,7 +30,7 @@ const VendorDetailsTable = ({ staffs }) => {
             <TableCell>{staff.email}</TableCell>
             <TableCell>{staff.mobile}</TableCell>
             <TableCell>{staff.brandName}</TableCell>
-            <TableCell>{showDateFormat(staff.submittedAt)}</TableCell>
+            <TableCell>{showDateFormat(staff.createdAt)}</TableCell>
             <TableCell>
               <button
                 onClick={() => handleViewImages(staff)}
